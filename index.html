@@ -5,7 +5,12 @@
   <body>
     <canvas id="mainRoom" width="800" height="600"></canvas>
     <script>
+      var canvas = document.getElementById("mainRoom");
       
+      var ctx = canvas.getContext("2d");
+      ctx.moveTo(0, 0);
+      ctx.lineTo(800, 600);
+      ctx.stroke();
     </script>
   </body>
 </html>
