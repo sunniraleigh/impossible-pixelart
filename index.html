@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      #merlin {
+        width: 100px;
+        height: 160px;
+        image-rendering: pixelated;
+      }
+    </style>
   </head>
   <body>
     <canvas id="mainRoom" width="400" height="300"></canvas>
+
+    <canvas id="merlin" width="25" height="40"></canvas>
     <script>
+      // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images
+
+      //   1. Create the primary canvas
       var canvas = document.getElementById("mainRoom");
 
       var ctx = canvas.getContext("2d");
       ctx.moveTo(0, 0);
       ctx.lineTo(400, 300);
       ctx.stroke();
+
+      // 2. Draw Merlin to a canvas; allows him to be scaled without blurring
+      const merlinCtx = document.getElementById("merlin").getContext("2d");
+
+      const merlinImage = new Image();
+      merlinImage.onload = () => {
+        merlinCtx.drawImage(merlinImage, 0, 0);
+
+        // 3. Draw in Merlin to the primary canvas
+        ctx.drawImage(document.getElementById("merlin"), 10, 10);
+      };
+      merlinImage.src = "merlin-001-25x40.png";
     </script>
   </body>
 </html>
