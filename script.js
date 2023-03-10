@@ -18,6 +18,7 @@ function drawScene(){
   var canvas = document.getElementById("gallery");
   var ctx = canvas.getContext('2d');
 
+  // loads other elements into the room except for merlin
   clearCanvas();
 
   // load merlin
