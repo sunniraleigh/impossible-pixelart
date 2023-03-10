@@ -58,21 +58,25 @@ var posY = 85;
 
 function moveMerlin(e, direction){
   switch(e.keyCode){
-    case 37:
-      // left key pressed
-      posX -= 2;
+    case 37: // left arrow key pressed
+      if (posX > 0){
+        posX -= 2;
+      }
       break;
-    case 38:
-      // up key pressed
-      posY -= 2;
+    case 38: // up arrow key pressed
+      if (posY > 63){
+        posY -= 2;
+      }
       break;
-    case 39:
-      // right key pressed
-      posX += 2;
+    case 39: // right arrow key pressed
+      if (posX < 175){
+        posX += 2;
+      }
       break;
-    case 40:
-      // down key pressed
-      posY += 2;
+    case 40: // down arrow key pressed
+      if (posY < 110){
+        posY += 2;
+      }
       break;
   }
   e.preventDefault();
