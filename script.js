@@ -5,8 +5,10 @@ const merlin = new Image();
 const cow = new Image();
 const bear = new Image();
 const bunny = new Image();
+const background = new Image();
 
 function init(){
+  background.src = "background.png"
   merlin.src = "merlin.png";
   cow.src = "cow.png";
   bear.src = "bears.png";
@@ -26,14 +28,10 @@ function drawScene(){
 }
 
 function clearCanvas(){
-  var canvas = document.getElementById("gallery");
-  var ctx = canvas.getContext('2d');
+  var ctx = document.getElementById("gallery").getContext('2d');
 
-  ctx.fillStyle = "green";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "Maroon";
-  ctx.fillRect(0, 300, canvas.width, canvas.height/2)
+  // draw background
+  ctx.drawImage(background, 0, 0);
   
   // draw art work into canvas
   // cow jumps over the moon painting
