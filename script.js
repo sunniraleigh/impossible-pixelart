@@ -2,15 +2,15 @@
 
 // define objects
 const merlin = new Image();
-const cow = new Image(150, 150);
-const bear = new Image(150, 150);
-const bunny = new Image(150, 150);
+const cow = new Image();
+const bear = new Image();
+const bunny = new Image();
 
 function init(){
-  merlin.src = "merlin-001-25x40.png";
-  cow.src = "cow-jumps-moon-sm.png";
-  bear.src = "three-bears-sm.png";
-  bunny.src = "bunny-gone-fishing-sm.png";
+  merlin.src = "merlin.png";
+  cow.src = "cow.png";
+  bear.src = "bears.png";
+  bunny.src = "bunny.png";
 }
 // Load objects into canvas
 // retreive canvas id
