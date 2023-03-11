@@ -2,9 +2,9 @@
 
 // define objects
 const merlin = new Image();
-const cow = new Image();
-const bear = new Image();
-const bunny = new Image();
+const cow = new Image(150, 150);
+const bear = new Image(150, 150);
+const bunny = new Image(150, 150);
 
 function init(){
   merlin.src = "merlin-001-25x40.png";
@@ -22,7 +22,7 @@ function drawScene(){
   clearCanvas();
 
   // load merlin
-  ctx.drawImage(merlin, 90, 85);
+  ctx.drawImage(merlin, 270, 255);
 }
 
 function clearCanvas(){
@@ -33,7 +33,7 @@ function clearCanvas(){
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "Maroon";
-  ctx.fillRect(0, 100, canvas.width, canvas.height/2)
+  ctx.fillRect(0, 300, canvas.width, canvas.height/2)
   
   // draw art work into canvas
   // cow jumps over the moon painting
