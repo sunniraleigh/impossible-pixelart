@@ -17,14 +17,13 @@ function init(){
 // Load objects into canvas
 // retreive canvas id
 function drawScene(){
-  var canvas = document.getElementById("gallery");
-  var ctx = canvas.getContext('2d');
+  var ctx = document.getElementById("gallery").getContext('2d');
 
   // loads other elements into the room except for merlin
   clearCanvas();
 
   // load merlin
-  ctx.drawImage(merlin, 270, 255);
+  ctx.drawImage(merlin, 200, 175);
 }
 
 function clearCanvas(){
@@ -35,13 +34,13 @@ function clearCanvas(){
   
   // draw art work into canvas
   // cow jumps over the moon painting
-  ctx.drawImage(cow, 40, 50);
+  ctx.drawImage(cow, 50, 50);
 
   // three bears painting
-  ctx.drawImage(bear, 85, 50);
+  ctx.drawImage(bear, 225, 50);
 
   // gone fishing painting
-  ctx.drawImage(bunny, 130, 50);
+  ctx.drawImage(bunny, 400, 50);
 }
 
 function drawMerlin(posX, posY){
@@ -52,33 +51,34 @@ function drawMerlin(posX, posY){
 }
 
 window.addEventListener("keydown", (e) => moveMerlin(e, "down"), false)
-var posX = 90;
-var posY = 85;
+var posX = 200;
+var posY = 175;
+var speed = 10
 
 function moveMerlin(e, direction){
   switch(e.keyCode){
     case 37: // left arrow key pressed
-      if (posX > 0){
-        posX -= 2;
+      if (posX > -30){
+        posX -= speed;
       }
       break;
     case 38: // up arrow key pressed
-      if (posY > 63){
-        posY -= 2;
+      if (posY > 175){
+        posY -= speed;
       }
       break;
     case 39: // right arrow key pressed
-      if (posX < 175){
-        posX += 2;
+      if (posX < 460){
+        posX += speed;
       }
       break;
     case 40: // down arrow key pressed
-      if (posY < 110){
-        posY += 2;
+      if (posY < 270){
+        posY += speed;
       }
       break;
   }
-  e.preventDefault();
+
   clearCanvas();
   drawMerlin(posX, posY);
   console.log(posX, posY);
