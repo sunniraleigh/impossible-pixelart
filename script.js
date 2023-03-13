@@ -1,4 +1,14 @@
-// game play sript
+// painting class
+  // painting is an image on the canvas
+  // needs to be loaded in at x,y coords
+  // needs to be deleted and moved
+  // might need a parent object when moved??
+
+// room class
+
+// animal class
+  // currently merlin
+  // moves and stuff
 
 // define objects
 const merlin = new Image();
