@@ -1,14 +1,12 @@
-// painting class
-  // painting is an image on the canvas
-  // needs to be loaded in at x,y coords
-  // needs to be deleted and moved
-  // might need a parent object when moved??
+// item class
+  // basically the image class + holds the coordinates
+class Item {
+  constructor(image){
+    this.image = image;
+    
+  }
 
-// room class
-
-// animal class
-  // currently merlin
-  // moves and stuff
+}
 
 // define objects
 const merlin = new Image();
@@ -24,6 +22,8 @@ function init(){
   bear.src = "bears.png";
   bunny.src = "bunny.png";
 }
+
+
 // Load objects into canvas
 // retreive canvas id
 function drawScene(){
