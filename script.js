@@ -58,15 +58,16 @@ function drawMerlin(posX, posY){
 
 function viewPainting(posX, posY){
   var ctx = document.getElementById("gallery").getContext('2d');
+  var reactionHeight = posY - 125
 
   // if merlin coords align with paiting coords in the x axis, then merlin is viewing the paiting
   if (posY <= 200){
     if (posX == 50){ // view cow paiting
-      ctx.drawImage(cowReaction, 175, 50);
+      ctx.drawImage(cowReaction, posX + 125, reactionHeight);
     }else if (posX == 230){ // view bear paiting
-      ctx.drawImage(bearReaction, 120, 50);
+      ctx.drawImage(bearReaction, posX - 110, reactionHeight);
     }else if (posX == 400){ // view bunny paiting
-      ctx.drawImage(bunnyReaction, 300, 50);
+      ctx.drawImage(bunnyReaction, posX - 100, reactionHeight);
     }
   }
 }
