@@ -62,11 +62,11 @@ function viewPainting(posX, posY){
 
   // if merlin coords align with paiting coords in the x axis, then merlin is viewing the paiting
   if (posY <= 200){
-    if (posX == 50){ // view cow paiting
+    if (posX >= 0 && posX <= 100){ // view cow paiting
       ctx.drawImage(cowReaction, posX + 125, reactionHeight);
-    }else if (posX == 230){ // view bear paiting
+    }else if (posX >= 180 && posX <= 310){ // view bear paiting
       ctx.drawImage(bearReaction, posX - 110, reactionHeight);
-    }else if (posX == 400){ // view bunny paiting
+    }else if (posX >= 330 && posX <= 440){ // view bunny paiting
       ctx.drawImage(bunnyReaction, posX - 100, reactionHeight);
     }
   }
