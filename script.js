@@ -6,6 +6,9 @@ const cow = new Image();
 const bear = new Image();
 const bunny = new Image();
 const background = new Image();
+const cowReaction = new Image();
+const bearReaction = new Image();
+const bunnyReaction = new Image();
 
 function init(){
   background.src = "background.png"
@@ -13,6 +16,9 @@ function init(){
   cow.src = "cow.png";
   bear.src = "bears.png";
   bunny.src = "bunny.png";
+  cowReaction.src = "cow-reaction.png";
+  bearReaction.src = "bear-reaction.png";
+  bunnyReaction.src = "bunny-reaction.png";
 }
 // Load objects into canvas
 // retreive canvas id
@@ -50,6 +56,22 @@ function drawMerlin(posX, posY){
   ctx.drawImage(merlin, posX, posY)
 }
 
+function viewPainting(posX, posY){
+  var ctx = document.getElementById("gallery").getContext('2d');
+
+  // if merlin coords align with paiting coords in the x axis, then merlin is viewing the paiting
+  if (posY <= 200){
+    if (posX == 50){ // view cow paiting
+      ctx.drawImage(cowReaction, 175, 50);
+    }else if (posX == 230){ // view bear paiting
+      ctx.drawImage(bearReaction, 120, 50);
+    }else if (posX == 400){ // view bunny paiting
+      ctx.drawImage(bunnyReaction, 300, 50);
+    }
+  }
+}
+
+// Moving Merlin around
 window.addEventListener("keydown", (e) => moveMerlin(e, "down"), false)
 var posX = 200;
 var posY = 175;
@@ -82,7 +104,10 @@ function moveMerlin(e, direction){
   clearCanvas();
   drawMerlin(posX, posY);
   console.log(posX, posY);
+  viewPainting(posX, posY);
 }
+
+
 
 init();
 
