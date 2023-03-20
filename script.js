@@ -33,7 +33,8 @@ function drawScene(){
 }
 
 function clearCanvas(){
-  var ctx = document.getElementById("gallery").getContext('2d');
+  var canvas = document.getElementById("gallery");
+  var ctx = canvas.getContext('2d');
 
   // draw background
   ctx.drawImage(background, 0, 0);
@@ -44,7 +45,7 @@ function clearCanvas(){
 
   // three bears painting
   ctx.drawImage(bear, 225, 50);
-
+ 
   // gone fishing painting
   ctx.drawImage(bunny, 400, 50);
 }
@@ -73,10 +74,10 @@ function viewPainting(posX, posY){
 }
 
 // Moving Merlin around
-window.addEventListener("keydown", (e) => moveMerlin(e, "down"), false)
+window.addEventListener("keydown", (e) => moveMerlin(e, "down"));
 var posX = 200;
 var posY = 175;
-var speed = 10
+var speed = 10;
 
 function moveMerlin(e, direction){
   switch(e.keyCode){
@@ -107,8 +108,6 @@ function moveMerlin(e, direction){
   console.log(posX, posY);
   viewPainting(posX, posY);
 }
-
-
 
 init();
 
