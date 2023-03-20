@@ -73,40 +73,89 @@ function viewPainting(posX, posY){
   }
 }
 
-// Moving Merlin around
-window.addEventListener("keydown", (e) => moveMerlin(e, "down"));
-var posX = 200;
-var posY = 175;
-var speed = 10;
+function whichPainting(posX, posY){
+  if(posY <= 200 ){
+    if (posX >= 0 && posX <= 100){ // rotate cow paiting
+      console.log("cow");
+      return document.getElementById("cow");
+    }else if (posX >= 180 && posX <= 310){ // rotate bear paiting
+      console.log("bear");
+      return document.getElementById("bear");
+    }else if (posX >= 330 && posX <= 440){ // rotate bunny paiting
+      console.log("bunny");
+      return document.getElementById("bunny");
+    }
+  }
+}
 
-function moveMerlin(e, direction){
+function rotatePainting(posX, posY, degrees){
+  var ctx = document.getElementById("gallery").getContext("2d");
+
+  // rotate canvas
+  ctx.save();
+  ctx.rotate(degrees*Math.PI/180);
+
+  if(posY <= 200 ){
+    if (posX >= 0 && posX <= 100){ // rotate cow paiting
+      console.log("cow");
+      ctx.drawImage(cow, 50, 50);
+    }else if (posX >= 180 && posX <= 310){ // rotate bear paiting
+      console.log("bear");
+      ctx.drawImage(bear, 225, 50);
+    }else if (posX >= 330 && posX <= 440){ // rotate bunny paiting
+      console.log("bunny");
+      ctx.drawImage(bunny, 400, 50);
+    }
+  }  
+  // restore context
+  ctx.restore();
+}
+
+// Responding to events
+window.addEventListener("keydown", (e) => updateCanvas(e, "down"));
+var merlinPosX = 200;
+var merlinPosY = 175;
+var merlinSpeed = 10;
+var rotationSpeed = 5;
+
+function updateCanvas(e, direction){
+  clearCanvas();
   switch(e.keyCode){
     case 37: // left arrow key pressed
-      if (posX > -30){
-        posX -= speed;
+      if (merlinPosX > -30){
+        merlinPosX -= merlinSpeed;
       }
       break;
     case 38: // up arrow key pressed
-      if (posY > 175){
-        posY -= speed;
+      if (merlinPosY > 175){
+        merlinPosY -= merlinSpeed;
       }
       break;
     case 39: // right arrow key pressed
-      if (posX < 460){
-        posX += speed;
+      if (merlinPosX < 460){
+        merlinPosX += merlinSpeed;
       }
       break;
     case 40: // down arrow key pressed
-      if (posY < 270){
-        posY += speed;
+      if (merlinPosY < 270){
+        merlinPosY += merlinSpeed;
       }
       break;
+    case 190: // period key pressed
+      // rotate painting clock-wise
+      rotationSpeed += 5;
+      rotatePainting(merlinPosX, merlinPosY, rotationSpeed);
+      console.log("rotate clockwise");
+      break;
+    case 188: // comma key pressed
+      // rotate painting counter clock-wise
+      rotationSpeed -= 5;
+      rotatePainting(merlinPosX, merlinPosY, rotationSpeed);
+      console.log("rotate counter clock-wise");
+      break;
   }
-
-  clearCanvas();
-  drawMerlin(posX, posY);
-  console.log(posX, posY);
-  viewPainting(posX, posY);
+  drawMerlin(merlinPosX, merlinPosY);
+  viewPainting(merlinPosX, merlinPosY);
 }
 
 init();
