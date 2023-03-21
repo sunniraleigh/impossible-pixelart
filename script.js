@@ -1,5 +1,3 @@
-// game play sript
-
 // define objects
 const merlin = new Image();
 const cow = new Image();
@@ -11,6 +9,7 @@ const bearReaction = new Image();
 const bunnyReaction = new Image();
 
 function init(){
+  // connect to src images
   background.src = "background.png"
   merlin.src = "merlin.png";
   cow.src = "cow.png";
@@ -19,42 +18,40 @@ function init(){
   cowReaction.src = "cow-reaction.png";
   bearReaction.src = "bear-reaction.png";
   bunnyReaction.src = "bunny-reaction.png";
+
+  // starting coords, rotations, view range
+  merlin.posX = 200;
+  merlin.posY = 175;
+  merlin.rot = 0;
+
+  cow.posX = 50;
+  cow.posY = 50;
+  cow.rot = 0;
+
+  bear.posX = 225;
+  bear.posY = 50;
+  bear.rot = 0;
+
+  bunny.posX = 400;
+  bunny.posY = 50;
+  bunny.rot = 0;
 }
-// Load objects into canvas
-// retreive canvas id
-function drawScene(){
+
+init();
+
+function drawGallery(){
   var ctx = document.getElementById("gallery").getContext('2d');
 
-  // loads other elements into the room except for merlin
-  clearCanvas();
-
-  // load merlin
-  ctx.drawImage(merlin, 200, 175);
-}
-
-function clearCanvas(){
-  var canvas = document.getElementById("gallery");
-  var ctx = canvas.getContext('2d');
-
-  // draw background
+  // background
   ctx.drawImage(background, 0, 0);
-  
-  // draw art work into canvas
-  // cow jumps over the moon painting
-  ctx.drawImage(cow, 50, 50);
 
-  // three bears painting
-  ctx.drawImage(bear, 225, 50);
- 
-  // gone fishing painting
-  ctx.drawImage(bunny, 400, 50);
-}
+  // paintings
+  ctx.drawImage(cow, cow.posX, cow.posY);
+  ctx.drawImage(bear, bear.posX, bear.posY);
+  ctx.drawImage(bunny, bunny.posX, bunny.posY);
 
-function drawMerlin(posX, posY){
-  var ctx = document.getElementById("gallery").getContext('2d');
-
-  // draw merlin in canvas
-  ctx.drawImage(merlin, posX, posY)
+  // merlin
+  ctx.drawImage(merlin, merlin.posX, merlin.posY);
 }
 
 function viewPainting(posX, posY){
@@ -75,41 +72,34 @@ function viewPainting(posX, posY){
 
 // Moving Merlin around
 window.addEventListener("keydown", (e) => moveMerlin(e, "down"));
-var posX = 200;
-var posY = 175;
 var speed = 10;
 
 function moveMerlin(e, direction){
   switch(e.keyCode){
     case 37: // left arrow key pressed
-      if (posX > -30){
-        posX -= speed;
+      if (merlin.posX > -30){
+        merlin.posX -= speed;
       }
       break;
     case 38: // up arrow key pressed
-      if (posY > 175){
-        posY -= speed;
+      if (merlin.posY > 175){
+        merlin.posY -= speed;
       }
       break;
     case 39: // right arrow key pressed
-      if (posX < 460){
-        posX += speed;
+      if (merlin.posX < 460){
+        merlin.posX += speed;
       }
       break;
     case 40: // down arrow key pressed
-      if (posY < 270){
-        posY += speed;
+      if (merlin.posY < 270){
+        merlin.posY += speed;
       }
       break;
   }
 
-  clearCanvas();
-  drawMerlin(posX, posY);
-  console.log(posX, posY);
-  viewPainting(posX, posY);
+  drawGallery();
+  console.log(merlin.posX, merlin.posY);
+  viewPainting(merlin.posX, merlin.posY);
 }
-
-init();
-
-
 
