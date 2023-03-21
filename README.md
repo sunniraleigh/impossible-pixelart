@@ -8,6 +8,6 @@ Have fun being little virtual merlin and enjoy the art!
 
 ### Features
 [x] move merlin  
-[ ] view painting  
+[x] view painting  
 [ ] move painting  
 [ ] steal painting  
