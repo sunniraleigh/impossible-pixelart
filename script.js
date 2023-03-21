@@ -8,6 +8,10 @@ const cowReaction = new Image();
 const bearReaction = new Image();
 const bunnyReaction = new Image();
 
+// define other vars
+var speed = 10;
+var rotSpeed = 5;
+
 function init(){
   // connect to src images
   background.src = "background.png"
@@ -61,20 +65,19 @@ function viewPainting(posX, posY){
   // if merlin coords align with paiting coords in the x axis, then merlin is viewing the paiting
   if (posY <= 200){
     if (posX >= 0 && posX <= 100){ // view cow paiting
-      ctx.drawImage(cowReaction, posX + 125, reactionHeight);
+      // ctx.drawImage(cowReaction, posX + 125, reactionHeight);
     }else if (posX >= 180 && posX <= 310){ // view bear paiting
-      ctx.drawImage(bearReaction, posX - 110, reactionHeight);
+      // ctx.drawImage(bearReaction, posX - 110, reactionHeight);
     }else if (posX >= 330 && posX <= 440){ // view bunny paiting
-      ctx.drawImage(bunnyReaction, posX - 100, reactionHeight);
+      // ctx.drawImage(bunnyReaction, posX - 100, reactionHeight);
     }
   }
 }
 
 // Moving Merlin around
-window.addEventListener("keydown", (e) => moveMerlin(e, "down"));
-var speed = 10;
+window.addEventListener("keydown", (e) => updateGallery(e, "down"));
 
-function moveMerlin(e, direction){
+function updateGallery(e, direction){
   switch(e.keyCode){
     case 37: // left arrow key pressed
       if (merlin.posX > -30){
